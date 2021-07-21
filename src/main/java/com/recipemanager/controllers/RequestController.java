@@ -4,6 +4,7 @@ import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -17,7 +18,7 @@ import com.recipemanager.services.RecipeService;
 import com.recipemanager.services.RequestService;
 
 import reactor.core.publisher.Mono;
-
+@CrossOrigin
 @RestController
 @RequestMapping(value = "/request")
 public class RequestController {

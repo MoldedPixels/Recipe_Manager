@@ -12,6 +12,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseCookie;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CookieValue;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,7 +31,7 @@ import com.recipemanager.services.UserService;
 import com.recipemanager.utils.JWTParser;
 
 import reactor.core.publisher.Mono;
-
+@CrossOrigin
 @RestController
 public class UserController {
 	private UserService userService;
@@ -90,6 +92,13 @@ public class UserController {
 				exchange.getResponse().setStatusCode(HttpStatus.INTERNAL_SERVER_ERROR);
 			}
 		});
+	}
+// simple return boolean if someone else wants to mess around to get actual levels they can
+	@GetMapping(value = "login", produces = MediaType.APPLICATION_NDJSON_VALUE)
+	public boolean getlogin(ServerWebExchange exchange,@CookieValue(value = "token", defaultValue = "") String token) {
+		if (token==null||token.equals(""))
+			return false;
+		return true;
 	}
 
 	@DeleteMapping("login")
