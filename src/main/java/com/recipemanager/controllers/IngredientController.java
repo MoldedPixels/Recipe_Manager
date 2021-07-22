@@ -6,6 +6,7 @@ import org.reactivestreams.Publisher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,7 +19,7 @@ import com.recipemanager.beans.Ingredient;
 import com.recipemanager.services.IngredientService;
 
 import reactor.core.publisher.Mono;
-
+@CrossOrigin
 @RestController
 @RequestMapping(value = "/ingredient")
 public class IngredientController {
