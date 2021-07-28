@@ -59,7 +59,7 @@ public class RecipeController {
 		return null;
 	}
 
-	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value = "/all", produces = MediaType.APPLICATION_JSON_VALUE)
 	public Publisher<Recipe> getRecipes(ServerWebExchange exchange) {
 		User u = authorize.userAuth(exchange);
 		if (u != null) {
